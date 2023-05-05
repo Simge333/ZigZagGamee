@@ -587,8 +587,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.23473679, y: 0.5984832, z: -0.18927918, w: -0.74221957}
-  m_LocalPosition: {x: 2.9898822, y: 3.3679345, z: -1.1431847}
+  m_LocalRotation: {x: -0.17148685, y: 0.53243655, z: -0.11115493, w: -0.8214306}
+  m_LocalPosition: {x: 3.4199867, y: 2.4691374, z: -1.9994366}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -620,6 +620,7 @@ GameObject:
   - component: {fileID: 1806897912}
   - component: {fileID: 1806897911}
   - component: {fileID: 1806897910}
+  - component: {fileID: 1806897914}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -709,6 +710,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1806897914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806897909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5d7207c709b4d9087e9085494d39cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1854778846
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,6 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e83ea2975834460ab13e494bf82d25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 2132921100}
   groundSpawner: {fileID: 1854778848}
   speed: 1.3
   hizlanmaZorlugu: 0.1
@@ -944,7 +958,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 29028cf5367a447f9b7241bb9d95a8dd, type: 3}
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
