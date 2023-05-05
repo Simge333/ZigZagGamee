@@ -12,7 +12,7 @@ public class GroundSpawner : MonoBehaviour
             ZeminOlustur();
         }
     }
-    void ZeminOlustur()
+   public void ZeminOlustur()
     {
         Vector3 yon;
         if (Random.Range(0,2)==0)//0 gelirse x ekseninde zemin koy
