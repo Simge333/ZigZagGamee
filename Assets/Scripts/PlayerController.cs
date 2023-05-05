@@ -9,9 +9,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed;
 
     Vector3 yon = Vector3.left;
+    public static bool isDeath = false;
 
     private void Update()
     {
+        if (isDeath)
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             if (yon.x==0)
@@ -26,6 +31,12 @@ public class PlayerController : MonoBehaviour
                 yon = Vector3.back;
             }
         }
+        if (transform.position.y < 0.1f)
+        {
+            isDeath = true;
+            
+            Destroy(this.gameObject, 3f);
+        }
     }
     private void FixedUpdate()
     {
@@ -36,13 +47,17 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Zemin"))
         {
-            YokEt(collision.gameObject);
+            StartCoroutine(YokEt(collision.gameObject));
             groundSpawner.ZeminOlustur();
         }
     }
-    void YokEt(GameObject zemin)
+    IEnumerator YokEt(GameObject zemin)
     {
-        Destroy(zemin,1);
+        yield return new WaitForSeconds(0.2f);
+        zemin.AddComponent<Rigidbody>();
+
+        yield return new WaitForSeconds(0.8f);
+        Destroy(zemin);
     }
 
 }//class
