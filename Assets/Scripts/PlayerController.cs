@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     Vector3 yon = Vector3.left;
     public static bool isDeath = false;
+    public float hizlanmaZorlugu;
 
     private void Update()
     {
@@ -40,7 +41,9 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+
         Vector3 hareket = yon * speed * Time.deltaTime;//objemizin hareket değeri
+        speed += Time.deltaTime * hizlanmaZorlugu;
         transform.position += hareket;//hareket değerini sürekli pozisyona ekle
     }
     private void OnCollisionExit(Collision collision)
