@@ -5,19 +5,25 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] Text scoreText,bestScoreText;
+    
      
+   
+    [Header("Out Componen")]
+    [SerializeField] float speed;
+    [SerializeField] Text scoreText,bestScoreText;
+    [SerializeField] GameObject restartPanel,playGamePanel;
+
+    [Header("Public Variable")]
+    public GroundSpawner groundSpawner;
+    public static bool isDeath = false;
+    public float hizlanmaZorlugu;
+
+    
+    Vector3 yon = Vector3.left;
     float score =0f;
     float artisMiktari=1f;
     int bestScore = 0;
-
-    public GroundSpawner groundSpawner;
-
-    [SerializeField] float speed;
-
-    Vector3 yon = Vector3.left;
-    public static bool isDeath = false;
-    public float hizlanmaZorlugu;
+    
 
     private void Start()
     {
