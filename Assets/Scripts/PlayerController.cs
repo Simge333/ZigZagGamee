@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
    
     [Header("Out Componen")]
     [SerializeField] float speed;
-    [SerializeField] Text scoreText,bestScoreText;
+    [SerializeField] Text scoreText,bestScoreText, SbestScoreText;
     [SerializeField] GameObject restartPanel,playGamePanel;
 
     [Header("Public Variable")]
@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
         }
         bestScore = PlayerPrefs.GetInt("BestScore");
         bestScoreText.text = "Best Score : " + bestScore.ToString();
+        SbestScoreText.text = "Best Score : " + bestScore.ToString();
     }
     private void Update()
     {
