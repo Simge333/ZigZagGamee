@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+
+
     
-     
-   
     [Header("Out Componen")]
     [SerializeField] float speed;
     [SerializeField] Text scoreText,bestScoreText, SbestScoreText;//
@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [Header("Public Variable")]
     public GroundSpawner groundSpawner;
     public static bool isDeath = true;
-    public float hizlanmaZorlugu;
+   public float hizlanmaZorlugu=0.1f;
 
     
     Vector3 yon = Vector3.left;
@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        //if (score > 3)
+        //{
+          //  hizlanmaZorlugu += 0.5f;
+       // }
         if (RestarGame.isRestart)
         {
             isDeath = false;
@@ -39,6 +43,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+        
         if (isDeath)
         {
             return;
@@ -72,6 +77,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        
         if (isDeath)
         {
             return;
@@ -80,7 +86,8 @@ public class PlayerController : MonoBehaviour
         Vector3 hareket = yon * speed * Time.deltaTime;//objemizin hareket değeri
         speed += Time.deltaTime * hizlanmaZorlugu;
         transform.position += hareket;//hareket değerini sürekli pozisyona ekle
-        score += artisMiktari * speed * Time.deltaTime;
+                                      // score += artisMiktari * speed * Time.deltaTime;
+        
         if (score > bestScore)
         {
             messagePanel.SetActive(true);
@@ -111,5 +118,12 @@ public class PlayerController : MonoBehaviour
         isDeath = false;
         playGamePanel.SetActive(false);
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            score++;
+            Destroy(other.gameObject);
+        }
+    }
 }//class
