@@ -10,9 +10,9 @@ public class PlayerController : MonoBehaviour
    
     [Header("Out Componen")]
     [SerializeField] float speed;
-    [SerializeField] Text scoreText,bestScoreText, SbestScoreText;
-    [SerializeField] GameObject restartPanel,playGamePanel;
-
+    [SerializeField] Text scoreText,bestScoreText, SbestScoreText;//
+    [SerializeField] GameObject restartPanel,playGamePanel,messagePanel;
+    [SerializeField] Animator Panim;
     [Header("Public Variable")]
     public GroundSpawner groundSpawner;
     public static bool isDeath = true;
@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
     float score =0f;
     float artisMiktari=1f;
     int bestScore = 0;
-    
+
+    bool isOkay=false;
 
     private void Start()
     {
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
             {
                 bestScore = (int)score;
                 PlayerPrefs.SetInt("BestScore", bestScore);
+                
             }
             restartPanel.SetActive(true);
             Destroy(this.gameObject, 3f);
@@ -79,6 +81,12 @@ public class PlayerController : MonoBehaviour
         speed += Time.deltaTime * hizlanmaZorlugu;
         transform.position += hareket;//hareket değerini sürekli pozisyona ekle
         score += artisMiktari * speed * Time.deltaTime;
+        if (score > bestScore)
+        {
+            messagePanel.SetActive(true);
+            isOkay = true;
+        }
+        Panim.SetBool("isOkay",isOkay);
         scoreText.text = "Score : "+((int)score).ToString();
     }
     private void OnCollisionExit(Collision collision)
