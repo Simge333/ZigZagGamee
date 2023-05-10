@@ -5,7 +5,7 @@ using UnityEngine;
 public class GroundSpawner : MonoBehaviour
 {
     [SerializeField] GameObject sonZemin,coin;
-
+    //[SerializeField] GameObject zeminler;
 
     
    
@@ -21,7 +21,7 @@ public class GroundSpawner : MonoBehaviour
     }
     private void Update()
     {
-         CoinOlustur();
+        
     }
     public void ZeminOlustur()
     {
@@ -29,6 +29,8 @@ public class GroundSpawner : MonoBehaviour
         if (Random.Range(0,2)==0)//0 gelirse x ekseninde zemin koy
         {
             yon = Vector3.left;
+            //zeminler.GetComponentInChildren<GameObject>().SetActive(false);
+
         }
         else//1 gelirse z ekseninde zemin koy
         {
@@ -38,25 +40,6 @@ public class GroundSpawner : MonoBehaviour
         sonZemin = Instantiate(sonZemin, sonZemin.transform.position + yon, sonZemin.transform.rotation);
 
     }
-    public void CoinOlustur()
-    {
-        if (Random.Range(0,2)==1)
-        {
-             Vector3 yon;
-            if (Random.Range(0, 2) == 0)//0 gelirse x ekseninde zemin koy
-            {
-                yon = Vector3.left;
-            }
-            else//1 gelirse z ekseninde zemin koy
-            {
-                yon = Vector3.back;
-
-            }
-            coin = Instantiate(coin, coin.transform.position + yon, coin.transform.rotation);
-        }
-           
-      
-       
-    }
+    
    
 }//class
