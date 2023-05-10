@@ -28,10 +28,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        //if (score > 3)
-        //{
-          //  hizlanmaZorlugu += 0.5f;
-       // }
+        if (score > 3)
+        {
+          hizlanmaZorlugu += 0.5f;
+       }
         if (RestarGame.isRestart)
         {
             isDeath = false;
