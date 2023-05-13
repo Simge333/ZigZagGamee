@@ -21,17 +21,14 @@ public class PlayerController : MonoBehaviour
     
     Vector3 yon = Vector3.left;
     float score =0f;
-    float artisMiktari=1f;
+    //float artisMiktari=1f;
     int bestScore = 0;
 
     bool isOkay=false;
 
     private void Start()
     {
-        if (score > 3)
-        {
-          hizlanmaZorlugu += 0.5f;
-       }
+       
         if (RestarGame.isRestart)
         {
             isDeath = false;
@@ -84,7 +81,7 @@ public class PlayerController : MonoBehaviour
         }
 
         Vector3 hareket = yon * speed * Time.deltaTime;//objemizin hareket değeri
-        speed += Time.deltaTime * hizlanmaZorlugu;
+       
         transform.position += hareket;//hareket değerini sürekli pozisyona ekle
                                       // score += artisMiktari * speed * Time.deltaTime;
         
@@ -124,6 +121,12 @@ public class PlayerController : MonoBehaviour
         {
             score++;
             Destroy(other.gameObject);
-        }
+			if (score >= 30 && (int)score % 30 == 0)
+			{
+				hizlanmaZorlugu += 0.1f;
+				Debug.Log("çalıştı");
+				speed += hizlanmaZorlugu;
+			}
+		}
     }
 }//class
